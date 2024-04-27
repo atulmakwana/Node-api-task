@@ -1,0 +1,166 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "task",
+    "dateExported": "2024-04-27T17:55:07.667Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "74b43827-2a11-4be3-b8ee-8b69067d9247",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "Register user",
+            "url": "http://localhost:3000/user/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-27T11:27:53.041Z",
+            "modified": "2024-04-27T16:46:38.459Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"atul\",\n  \"username\":\"Atul@3456\",\n  \"password\":\"ATul#678945\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7c6f594d-fa4b-47c8-baba-0df1411b3eb4",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "login user",
+            "url": "http://localhost:3000/user/login",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-04-27T12:13:22.870Z",
+            "modified": "2024-04-27T16:56:01.085Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"atul1234\",\n  \"password\":\"Atul@1234\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a4aa41ed-cd18-4665-95f6-576753938b77",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "login user Copy",
+            "url": "http://localhost:3000/",
+            "method": "GET",
+            "sortNum": 25000,
+            "created": "2024-04-27T17:22:16.797Z",
+            "modified": "2024-04-27T17:22:31.872Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4b6e4732-273e-4757-ab34-20fcd56c3fc8",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "create post",
+            "url": "http://localhost:3000/post",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-04-27T14:42:11.323Z",
+            "modified": "2024-04-27T17:44:08.468Z",
+            "headers": [
+                {
+                    "name": "bearer",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF0dWwxMjM0IiwiaWF0IjoxNzE0MjE5MDk1fQ.d1hTGnqaUNkKzehx5fU7GD_Wn-v0z8vWdJCM8-urIcA"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"titl11\",\n  \"bodytext\": \"asdfgh\",\n  \"createdby\": \"662ce85732c1f83ea85bdc4f\",\n  \"active\": false,\n  \"geolocation\": {\n    \"type\": \"Point\",\n      \"coordinates\":[22.45,42.15]\n    }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "60dce54d-1eef-4e1c-857b-58f7e24d553b",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "Get posts by geolocation",
+            "url": "http://localhost:3000/post",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-04-27T15:11:25.289Z",
+            "modified": "2024-04-27T16:37:58.903Z",
+            "headers": [
+                {
+                    "name": "bearer",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF0dWwxMjM0IiwiaWF0IjoxNzE0MjIyODkwfQ.bGMbFACTRzFGnPQIcUyXrB3vWdDBZyzyL878gixEu4I"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"geolocation\": {\n    \"type\": \"Point\",\n    \"coordinates\":[12.45,32.15]\n  }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "ea8e550a-ef76-499b-b03b-5e3158a54202",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "Get post by id",
+            "url": "http://localhost:3000/post/662d156931126783f9a700c9",
+            "method": "GET",
+            "sortNum": 45000,
+            "created": "2024-04-27T16:39:17.823Z",
+            "modified": "2024-04-27T16:40:12.271Z",
+            "headers": [
+                {
+                    "name": "bearer",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF0dWwxMjM0IiwiaWF0IjoxNzE0MjIyODkwfQ.bGMbFACTRzFGnPQIcUyXrB3vWdDBZyzyL878gixEu4I"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "da0189aa-8391-41d9-b472-67f8cd6bf49d",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "update post",
+            "url": "http://localhost:3000/post/662d156931126783f9a700c9",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-04-27T16:37:37.002Z",
+            "modified": "2024-04-27T17:45:47.993Z",
+            "headers": [
+                {
+                    "name": "bearer",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF0dWwxMjM0IiwiaWF0IjoxNzE0MjIyODkwfQ.bGMbFACTRzFGnPQIcUyXrB3vWdDBZyzyL878gixEu4I"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"titl22\",\n  \"bodytext\": \"new Body text\",\n  \"active\": false,\n  \"geolocation\": {\n    \"type\": \"Point\",\n      \"coordinates\":[22.45,42.15]\n    }\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "cb7f9920-ea9c-46f3-9578-dff9cb3e2718",
+            "colId": "16b2d404-3256-4f39-bdac-ac16b5ddff36",
+            "containerId": "",
+            "name": "delete a post",
+            "url": "http://localhost:3000/post/662d156931126783f9a700c9",
+            "method": "DELETE",
+            "sortNum": 70000,
+            "created": "2024-04-27T16:40:41.953Z",
+            "modified": "2024-04-27T16:40:55.116Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
