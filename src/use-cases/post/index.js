@@ -1,10 +1,11 @@
 const Joi = require('joi')
-const { Post } = require('../../models')
+const { Post,User } = require('../../models')
 const exceptions = require('../../exceptions')
 
 const makeCreatePostAction = require('./create-post');
 const createPost = makeCreatePostAction({
     Post,
+    User,
     Joi,
     ValidationError:exceptions.ValidationError,
 });
@@ -12,6 +13,7 @@ const createPost = makeCreatePostAction({
 const makeDeletePostAction = require('./delete-post');
 const deletePost = makeDeletePostAction({
     Post,
+    User,
     Joi,
     ValidationError:exceptions.ValidationError,
     ObjectNotFoundError:exceptions.ObjectNotFoundError,
@@ -20,11 +22,13 @@ const deletePost = makeDeletePostAction({
 const makecGetPostLocation = require('./get-post-location');
 const getPostLocation = makecGetPostLocation({
     Post,
+    User,
 });
 
 const makeGetPostAction = require('./get-post');
 const getPost = makeGetPostAction({
     Post,
+    User,
     Joi,
     ValidationError:exceptions.ValidationError,
     ObjectNotFoundError:exceptions.ObjectNotFoundError,
@@ -33,8 +37,10 @@ const getPost = makeGetPostAction({
 const makeUpdatePostAction = require('./update-post');
 const updatePost = makeUpdatePostAction({
     Post,
+    User,
     Joi,
     ValidationError:exceptions.ValidationError,
+    ObjectNotFoundError:exceptions.ObjectNotFoundError,
 });
 
 

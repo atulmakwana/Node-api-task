@@ -1,14 +1,28 @@
 module.exports = function makeUpdatePost({
     Post,
+    User,
     Joi,
     ValidationError,
+    ObjectNotFoundError,
 })
 {
-    return async function updatePost({ postId, title, bodytext,  active,  geolocation })
+    return async function updatePost({ postId, title, bodytext,  active,  geolocation, username })
     {
         try{
             const { vtitle, vbodytext, vactive }  = validateInputData({ postId, title, bodytext, active });
-
+            
+            const post = await Post.findById(postId);
+            
+            if (!post) {
+                throw new ObjectNotFoundError(`No any such post exist with given postId!`);
+            }
+            
+            const user = await User.findOne({ username });
+            
+            //if a post exist, does it belongs to the user which token is passed or not
+            if(!post.createdBy.equals(user._id)){
+                throw new ObjectNotFoundError(`The given post doesn't belongs to the user ${username}, can't update someone else's post`)
+            }
             const updatedPost = await Post.findByIdAndUpdate(postId, { title:vtitle, bodytext:vbodytext, active:vactive, geolocation}, { new: true });
 
             return updatedPost

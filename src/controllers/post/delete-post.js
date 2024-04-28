@@ -6,7 +6,7 @@ module.exports = function makeDeletePostAction({
     return async function deletePostAction(req,res)
     {
         try{
-            const result = await deletePost({id:req.params.id})
+            const result = await deletePost({postId:req.params.id,username: req.user.username})
             res.status(200).json({message:"Post deleted  successfull..."})         
         }
         catch(error){

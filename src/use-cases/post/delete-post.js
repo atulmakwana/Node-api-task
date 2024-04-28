@@ -1,37 +1,31 @@
 module.exports = function makeDeletePost({
     Post,
-    Joi,
-    ValidationError,
+    User,
     ObjectNotFoundError,
 })
 {
-    return async function deletePost({ postId })
+    return async function deletePost({ postId,username })
     {
         try{
-            const { postId }  = validateInputData({ postId });
+            const user = await User.findOne({ username });
+            const post = await Post.findById(postId);
+
+            //checking even such post exist or not
+            if (!post) {
+                throw new ObjectNotFoundError('No any post exist with given postId!');
+            }
+
+            //if a post exist, does it belongs to the user which token is passed or not
+            if(!post.createdBy.equals(user._id)){
+                throw new ObjectNotFoundError(`The given post doesn't belongs to the user ${username}, can't delete someone else's post`)
+            }
 
             const deletedPost = await Post.findByIdAndDelete(postId);
-            if (!deletedPost) {
-                throw new ObjectNotFoundError('Post not found');
-            }
+            
             return deletedPost;
         }
         catch(error){
             throw error;
         }
     }
-    function validateInputData(data) 
-    {
-        const postIdSchema = Joi.number().integer();
-    
-        const { error: postIdError, value: validatedpostId } = postIdSchema.validate(data.postId);
-        if (postIdError) {
-            throw new ValidationError("Invalid post id: " + postIdError.message);
-        }
-    
-        return {
-            postId: validatedpostId,
-        };
-    }
-    
 }

@@ -1,16 +1,18 @@
 module.exports = function makeCreatePost({
     Post,
+    User,
     Joi,
     ValidationError,
 })
 {
-    return async function createPost({ title, bodytext, createdby,  active,  geolocation })
+    return async function createPost({ title, bodytext, username,  active,  geolocation })
     {
         try{
             const { vtitle, vbodytext, vactive }  = validateInputData({ title, bodytext, active });
-
+            const createdby = await User.findOne({username });
+            
             const newPost = new Post({
-                title:vtitle, bodytext:vbodytext, createdBy:createdby,  active:vactive,  geoLocation:geolocation
+                title:vtitle, bodytext:vbodytext, createdBy:createdby._id,  active:vactive,  geoLocation:geolocation
             })
             const res = await newPost.save()
             return res
@@ -21,7 +23,7 @@ module.exports = function makeCreatePost({
     }
     function validateInputData(data) 
     {
-        const titleSchema = Joi.string().required();
+        const titleSchema = Joi.string().min(4).required();
         const bodytextSchema = Joi.string().min(4).required();
         const activeSchema = Joi.boolean();
     

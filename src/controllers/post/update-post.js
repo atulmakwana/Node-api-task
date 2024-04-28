@@ -12,8 +12,9 @@ module.exports = function makeUpdatePostAction({
                 bodytext: req.body.bodytext,
                 active: req.body.active,
                 geolocation: req.body.geolocation,
+                username: req.user.username
             })
-            res.status(200).json({"Post updated  successfull...":result});            
+            res.status(200).json({"Post updated successfull...":result});            
         }
         catch(error){
             if(!error.httpStatusCode){
